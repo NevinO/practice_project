@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CX3MDB</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<nav>
+  <ul>
+  <li>
+    <% if user_signed_in? %>
+      <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'login', new_user_session_path %> |
+      <%= link_to 'register', new_user_registration_path %>
+    <% end %>
+  </li>
+    <li>
+      <%= link_to 'gossip', public_path %>
+    </li>
+    <li>
+      <%= link_to 'secret', secret_path %>
+    </li>
+    <li>
+      <%= link_to 'really_secret', really_secret_path %>
+    </li>
+  </ul>
+<nav>
+
+<%= yield %>
+
+</body>
+</html>
